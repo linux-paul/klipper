@@ -354,6 +354,21 @@ class PrinterRail:
             raise config.error(
                 "Invalid homing_positive_dir / position_endstop in '%s'"
                 % (config.get_name(),))
+    def get_homing_data(self):
+        return {"speed":self.homing_speed,
+                "2_speed":self.second_homing_speed,
+                "dist":self.homing_retract_dist,
+                "dir":self.homing_positive_dir,
+                "min":self.position_min,
+                "max":self.position_max
+                }
+    def change_homing_data(self,data):
+        self.homing_speed = data["speed"]
+        self.second_homing_speed = data["2_speed"]
+        self.homing_retract_dist = data["dist"]
+        self.homing_positive_dir = data["dir"]
+        self.position_min = data['min']
+        self.position_max = data['max']
     def get_range(self):
         return self.position_min, self.position_max
     def get_homing_info(self):

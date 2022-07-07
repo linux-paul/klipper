@@ -349,6 +349,9 @@ class ProbeEndstopWrapper:
     def get_position_endstop(self):
         return self.position_endstop
 
+    def set_endstop(self, newstop):
+        self.mcu_endstop = newstop
+
 # Helper code that can probe a series of points and report the
 # position at each point.
 class ProbePointsHelper:
